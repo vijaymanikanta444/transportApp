@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { styles } from './LoginScreen.styles';
 
 const LoginScreen = ({ navigation }: any) => {
@@ -30,6 +30,11 @@ const LoginScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../../../assets/images/college-logo.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
       <Text style={styles.title}>College Transport</Text>
       <Text style={styles.subtitle}>Login with your registered email</Text>
 

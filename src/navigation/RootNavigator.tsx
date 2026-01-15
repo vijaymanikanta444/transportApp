@@ -1,21 +1,20 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { View, Text } from 'react-native';
 import AuthNavigator from './AuthNavigator';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SplashScreen from '../screens/common/SplashScreen';
 
-function TempScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>🚍 College Transport App</Text>
-    </View>
-  );
-}
+const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
   return (
     <NavigationContainer>
-      {/* <TempScreen /> */}
-      <AuthNavigator />
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }} // Hide headers globally
+      >
+        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="Auth" component={AuthNavigator} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

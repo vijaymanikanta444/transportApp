@@ -7,6 +7,12 @@ export const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: '#FFFFFF',
   },
+  logo: {
+    width: 120,
+    height: 120,
+    alignSelf: 'center',
+    marginBottom: 24,
+  },
   title: {
     fontSize: 28,
     fontWeight: '700',

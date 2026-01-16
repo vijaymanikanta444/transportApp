@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { styles } from './LoginScreen.styles';
 
-const LoginScreen = ({ navigation }: any) => {
+type LoginScreenProps = {
+  navigation: {
+    navigate: (screen: string, params?: any) => void;
+    replace?: (screen: string) => void;
+  };
+};
+
+const LoginScreen = ({ navigation }: LoginScreenProps) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 

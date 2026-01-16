@@ -5,46 +5,29 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import RootNavigator from './navigation/RootNavigator';
 import { enableScreens } from 'react-native-screens';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-enableScreens()
+import { store, persistor } from './store';
+
+enableScreens();
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
-       {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
-      {/*<AppContent /> */}
-      <RootNavigator />
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider>
+          <RootNavigator />
+        </SafeAreaProvider>
+      </PersistGate>
+    </Provider>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

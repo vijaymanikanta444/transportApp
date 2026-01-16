@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "988357933999",
+    "project_id": "viet-commute",
+    "storage_bucket": "viet-commute.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988357933999:android:db811a7a5aed86807fcd5a",
+        "android_client_info": {
+          "package_name": "com.transportapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgskg8aX0BIE-WEGs_fuecYXH0Ub0vWHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

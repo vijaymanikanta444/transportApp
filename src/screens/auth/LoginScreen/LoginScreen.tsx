@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { styles } from './LoginScreen.styles';
+import { sendOtpAPI } from '../../../services/otpService';
 
 type LoginScreenProps = {
   navigation: {
@@ -24,7 +25,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     setError('');
   };
 
-  const handleSendOtp = () => {
+  const handleSendOtp = async () => {
     if (!validateEmail(email)) {
       setError('Please enter a valid email address.');
       return;
@@ -33,6 +34,8 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     // Navigate to OTP screen with email param
     // navigation.navigate('Otp', { email });
     console.log('OTP sent to:', email);
+    const resp = await sendOtpAPI(email);
+    console.log({ resp });
   };
 
   return (

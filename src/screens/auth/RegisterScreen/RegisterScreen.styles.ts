@@ -27,22 +27,49 @@ export const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
+    gap: 12,
   },
   primaryButton: {
     backgroundColor: '#2563EB',
     padding: 14,
     borderRadius: 10,
     alignItems: 'center',
+    marginTop: 12,
+  },
+  primaryButtonDisabled: {
+    backgroundColor: '#94A3B8',
   },
   primaryButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
   },
-  linkText: {
-    textAlign: 'center',
-    marginTop: 24,
+  secondaryButton: {
+    padding: 14,
+    borderRadius: 10,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    marginTop: 12,
+  },
+  secondaryButtonText: {
     color: '#2563EB',
-    fontWeight: '500',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  errorText: {
+    color: '#DC2626',
+    fontSize: 14,
+    marginTop: 8,
+  },
+  loadingOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

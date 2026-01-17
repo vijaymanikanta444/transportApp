@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import { styles } from './LoginScreen.styles';
 import { sendOtpAPI } from '../../../services/otpService';
+import CustomInput from '../../../components/CustomInput';
 
 type LoginScreenProps = {
   navigation: {
@@ -13,6 +15,13 @@ type LoginScreenProps = {
 const LoginScreen = ({ navigation }: LoginScreenProps) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+
+  // Clear error when screen comes into focus
+  useFocusEffect(
+    React.useCallback(() => {
+      setError('');
+    }, []),
+  );
 
   // Email validation function
   const validateEmail = (input: string) => {
@@ -49,25 +58,21 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
       <Text style={styles.subtitle}>Login with your registered email</Text>
 
       <View style={styles.inputContainer}>
-        <TextInput
+        <CustomInput
+          label="Email"
           placeholder="Enter your email"
           keyboardType="email-address"
-          autoCapitalize="none"
           value={email}
           onChangeText={onhandleEmailInput}
-          style={styles.input}
+          error={error}
         />
-        {error ? <Text style={styles.errorText}>{error}</Text> : null}
       </View>
 
       <TouchableOpacity style={styles.primaryButton} onPress={handleSendOtp}>
         <Text style={styles.primaryButtonText}>Send OTP</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        // onPress={() => navigation.navigate('Register')}
-        onPress={() => console.log('hieer')}
-      >
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <Text style={styles.linkText}>New user? Register here</Text>
       </TouchableOpacity>
     </View>
